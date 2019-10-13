@@ -5,10 +5,8 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const config = require('../webpack.config.js')
 
-const app = express(),
-            DIST_DIR = __dirname,
-            HTML_FILE = path.join(DIST_DIR, 'index.html'),
-            compiler = webpack(config)
+const app = express()
+const compiler = webpack(config)
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
@@ -16,8 +14,8 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler))
 
-app.get('/', (req, res) =>
-    res.sendFile(path.resolve(__dirname, './dist/index.html'))
+app.get('/health', (req, res) =>
+    res.json({success: true})
 );
 
 const PORT = process.env.PORT || 8080
