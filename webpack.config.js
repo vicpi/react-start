@@ -16,6 +16,7 @@ module.exports = {
         alias: {
             'react-dom': '@hot-loader/react-dom',
         },
+        modules: ['node_modules', 'src']
     },
     module: {
         rules: [
@@ -33,6 +34,26 @@ module.exports = {
                         loader: "html-loader"
                     }
                 ]
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader', 'css-loader'
+                ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader', 'css-loader', 'sass-loader'
+                ]
+            },
+            {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'img/[name].[hash:8].[ext]'
+                }
             }
         ]
     },
