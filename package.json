@@ -5,12 +5,12 @@
     "homepage": "",
     "main": "index.js",
     "scripts": {
-        "start": "node server/server-dev.js",
+        "start": "npm run dev",
         "build": "webpack --config webpack.prod.config.js",
         "build-server": "NODE_ENV=production webpack --config webpack.server.config.js",
         "build-server-dev": "NODE_ENV=production webpack --config webpack.server-dev.config.js",
         "production": "npm run build && npm run build-server && node dist/server-prod.js",
-        "dev": "npm run build-server-dev && node dist/server-dev.js"
+        "dev": "nodemon server/server-dev.js"
     },
     "author": "",
     "license": "ISC",

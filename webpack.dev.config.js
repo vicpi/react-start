@@ -6,11 +6,11 @@ const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeM
 
 module.exports = {
     entry: {
-        index: ['webpack-hot-middleware/client', './src/index.js']
+        index: ['webpack-hot-middleware/client?reload=true&timeout=2000', './src/index.js']
     },
     output: {
-        path: path.join(__dirname),
-        publicPath: '/static/',
+        path: path.join(__dirname, 'dist'),
+        publicPath: '/',
         filename: '[name].js'
     },
     mode: 'development',
