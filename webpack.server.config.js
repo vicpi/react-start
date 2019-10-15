@@ -10,15 +10,15 @@ const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = (env, argv) => {
-    const SERVER_PATH = path.resolve(__dirname, '../server/server-production.js')
+    const SERVER_PATH = path.resolve(__dirname, 'server/server-prod.js')
 
     return ({
         entry: {
-            "server-production": SERVER_PATH,
+            "server-prod": SERVER_PATH,
         },
         output: {
-            path: path.resolve(__dirname, '..', 'build'),
-            publicPath: '/',
+            path: path.resolve(__dirname, 'dist'),
+            publicPath: '/static/',
             filename: '[name].js'
         },
         mode: 'production',
@@ -48,13 +48,13 @@ module.exports = (env, argv) => {
                     loader: 'url-loader',
                     options: {
                         limit: 10000,
-                        name: 'static/media/[name].[hash:8].[ext]'
+                        name: 'img/[name].[hash:8].[ext]'
                     }
                 }
             ]
         },
         resolve: {
-            modules: ['src']
+            modules: ['node_modules', 'src']
         }
     })
 }
