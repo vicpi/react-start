@@ -13,7 +13,6 @@ import App from 'components/App/App'
 const app = express()
 const port = 3000
 
-//Serve static files
 app.use('/static', express.static(path.join(__dirname, '..', 'dist')));
 
 app.get('/favicon.ico/', (req, res) => {
@@ -28,12 +27,7 @@ app.get('/robots.txt/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'dist/robots.txt'))
 })
 
-// This is fired every time the server side receives a request
-app.get('/', handleRender)
-
-// We are going to fill these out in the sections to follow
-function handleRender(req, res) {
-    console.log('oesuoeu')
+app.get('/', (req, res) => {
     const store = createStore(globalReducer)
     axios.get('http://localhost:8000/todos/')
         .then(response => {
@@ -48,11 +42,11 @@ function handleRender(req, res) {
             // Grab the initial state from our Redux store
             const preloadedState = store.getState()
 
-            // Send the rendered page back to the client
             res.send(renderFullPage(html, preloadedState))
         })
 
-}
+})
+
 function renderFullPage(html, preloadedState) {
     let file = fs.readFileSync(path.resolve(__dirname, '..', 'dist', 'index.html'), 'utf8')
     const state = JSON.stringify(preloadedState).replace(/</g, '\\u003c')

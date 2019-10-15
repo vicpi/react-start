@@ -1,18 +1,18 @@
-const path = require('path')
-const express = require('express')
+import path from 'path'
+import express from 'express'
 import axios from 'axios'
 import fs from 'fs'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-const isObject = require('is-object');
+import isObject from 'is-object'
 import { addTodo, setTodos } from 'actions'
 import globalReducer from 'reducers'
 import App from 'components/App/App'
-const webpack = require('webpack')
-const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
 const config = require('../webpack.dev.config.js')
 
 const app = express()
