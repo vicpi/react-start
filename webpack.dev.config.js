@@ -1,6 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 
 module.exports = {
     entry: {
@@ -62,6 +64,8 @@ module.exports = {
             template: "./src/index.html",
             filename: "./index.html"
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new CaseSensitivePathsPlugin(),
+        new WatchMissingNodeModulesPlugin('node_modules'),
     ]
 }
