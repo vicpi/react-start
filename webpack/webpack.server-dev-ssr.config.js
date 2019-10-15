@@ -10,15 +10,15 @@ const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
 
 module.exports = (env, argv) => {
-    const SERVER_PATH = path.resolve(__dirname, 'server/server-prod.js')
+    const SERVER_PATH = path.resolve(__dirname, '..', 'server/server-dev-ssr.js')
 
     return ({
         entry: {
-            "server-prod": SERVER_PATH,
+            "server-dev-ssr": SERVER_PATH,
         },
         output: {
-            path: path.resolve(__dirname, 'dist'),
-            publicPath: '/static/',
+            path: path.resolve(__dirname, '..', 'dist'),
+            publicPath: '/',
             filename: '[name].js'
         },
         mode: 'production',
