@@ -26,44 +26,22 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler))
 
-function normalizeAssets(assets) {
-    if (isObject(assets)) {
-        return Object.values(assets);
-    }
-
-    return Array.isArray(assets) ? assets : [assets];
-}
-
 app.get('/', (req, res) => {
-    // const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName;
-    const fs = res.locals.fs;
-    // const outputPath = res.locals.webpackStats.toJson().outputPath;
-    // const cssBundles = normalizeAssets(assetsByChunkName.index)
-    //     .filter((path) => path.endsWith('.css'))
-    //     .map((path) => fs.readFileSync(outputPath + '/' + path))
-    //     .join('\n')
-    // const javascriptBundles = normalizeAssets(assetsByChunkName.index)
-    //     .filter((path) => path.endsWith('.js'))
-    //     .map((path) => `<script src="${config.output.publicPath + path}"></script>`)
-    //     .join('\n')
-
-    let file = fs.readFileSync(
-        path.resolve(__dirname, '..', 'dist', 'index.html'),
-        'utf8'
-    )
-    const store = createStore(globalReducer)
     axios.get('http://localhost:8000/todos/')
         .then(response => {
+            const store = createStore(globalReducer)
             store.dispatch(setTodos(response.data))
+            const preloadedState = JSON.stringify(store.getState())
+                .replace(/</g, '\\u003c')
             const html = renderToString(
                 <Provider store={store}>
                     <App />
                 </Provider>
             )
-
-            const preloadedState = JSON.stringify(store.getState())
-                .replace(/</g, '\\u003c')
-
+            const fs = res.locals.fs;
+            let file = fs.readFileSync(
+                path.resolve(__dirname, '..', 'dist', 'index.html'), 'utf8'
+            )
             file = file.replace(
                 '<div id="root"></div>',
                 ` <script> window.__PRELOADED_STATE__ = ${preloadedState} </script>
