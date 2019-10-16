@@ -1,10 +1,7 @@
-import { hot } from 'react-hot-loader/root';
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { connect } from 'react-redux'
 import RTodoList from 'containers/RTodoList/RTodoList'
 import Modal from '../Modal/Modal'
-import { setTodos } from '../../actions/index'
 import headerImage from '../../images/header-image.jpg'
 import './App.scss'
 
@@ -33,11 +30,4 @@ function App(props) {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        todos: state.todos
-    }
-}
-const mapDispatchToProps = { setTodos }
-
-export default hot(connect(mapStateToProps, mapDispatchToProps)(App));
+export default App
