@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TextField from 'components/TextField/TextField'
-import RTodoItem from 'containers/RTodoItem/RTodoItem'
+import CTodoItem from 'containers/CTodoItem/CTodoItem'
 import { generateTodo } from 'helpers'
 
 const TodoList = (props) => {
@@ -16,7 +16,7 @@ const TodoList = (props) => {
         <TextField autoFocus={true} onChange={createNewTodo} />
         <ul className="todo-list">
             {props.todos.map(
-                todo => <RTodoItem todo={todo} key={todo.id} />
+                todo => <CTodoItem todo={todo} key={todo.id} />
             )}
         </ul>
     </div>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import RTodoList from 'containers/RTodoList/RTodoList'
+import CTodoList from 'containers/CTodoList/CTodoList'
 import Modal from '../Modal/Modal'
 import headerImage from '../../images/header-image.jpg'
 import './App.scss'
@@ -22,7 +22,7 @@ function App(props) {
             <section>
                 {props.todos === undefined
                     ? 'Loading...'
-                    : <RTodoList  />
+                    : <CTodoList  />
                 }
                 <Modal />
             </section>
