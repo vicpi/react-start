@@ -9,6 +9,7 @@ import { Provider } from 'react-redux'
 import { addTodo, setTodos } from 'actions'
 import globalReducer from 'reducers'
 import App from 'components/App/App'
+const routes = require('./routes/index')
 
 const app = express()
 const port = 3000
@@ -46,6 +47,8 @@ app.get('/', (req, res) => {
         })
 
 })
+
+app.use('/', routes)
 
 function renderFullPage(html, preloadedState) {
     let file = fs.readFileSync(path.resolve(__dirname, '..', 'dist', 'index.html'), 'utf8')
