@@ -9,7 +9,8 @@ import { Provider } from 'react-redux'
 import isObject from 'is-object'
 import { addTodo, setTodos } from 'actions'
 import globalReducer from 'reducers'
-import App from 'components/App/App'
+import { StaticRouter } from 'react-router';
+import Page from 'components/Page/Page'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
@@ -36,7 +37,9 @@ function normalizeAssets(assets) {
     return Array.isArray(assets) ? assets : [assets];
 }
 
-app.get('/', (req, res) => {
+app.use('/', routes)
+
+app.get('/*', (req, res) => {
     const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName;
     const outputPath = res.locals.webpackStats.toJson().outputPath;
     const javascriptBundles = normalizeAssets(assetsByChunkName.index)
@@ -50,9 +53,15 @@ app.get('/', (req, res) => {
             store.dispatch(setTodos(response.data))
             const preloadedState = JSON.stringify(store.getState())
                 .replace(/</g, '\\u003c')
+            const context = {};
             const html = renderToString(
                 <Provider store={store}>
-                    <App />
+                    <StaticRouter
+                      location={req.originalUrl}
+                      context={context}
+                    >
+                        <Page />
+                    </StaticRouter>
                 </Provider>
             )
             let file = fs.readFileSync(
@@ -69,8 +78,6 @@ app.get('/', (req, res) => {
             res.send(file);
         })
 });
-
-app.use('/', routes)
 
 const PORT = process.env.PORT || 3000
 

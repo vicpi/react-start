@@ -8,7 +8,8 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { addTodo, setTodos } from 'actions'
 import globalReducer from 'reducers'
-import App from 'components/App/App'
+import { StaticRouter } from 'react-router';
+import Page from 'components/Page/Page'
 const routes = require('./routes/index')
 
 const app = express()
@@ -28,15 +29,23 @@ app.get('/robots.txt/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'dist/robots.txt'))
 })
 
-app.get('/', (req, res) => {
+app.use('/', routes)
+
+app.get('/*', (req, res) => {
     const store = createStore(globalReducer)
     axios.get('http://localhost:8000/todos/')
         .then(response => {
             store.dispatch(setTodos(response.data))
+            const context = {};
             // Render the component to a string
             const html = renderToString(
                 <Provider store={store}>
-                    <App />
+                    <StaticRouter
+                      location={req.originalUrl}
+                      context={context}
+                    >
+                        <Page />
+                    </StaticRouter>
                 </Provider>
             )
 
@@ -47,8 +56,6 @@ app.get('/', (req, res) => {
         })
 
 })
-
-app.use('/', routes)
 
 function renderFullPage(html, preloadedState) {
     let file = fs.readFileSync(path.resolve(__dirname, '..', 'dist', 'index.html'), 'utf8')
