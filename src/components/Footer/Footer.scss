@@ -1,0 +1,26 @@
+@import "../../variables";
+
+.footer {
+    background-color: $color-dark-gray;
+    padding: 1.2rem 0;
+    display: flex;
+    justify-content: center;
+
+    ul.menu {
+        margin-bottom: 0;
+        display: flex;
+
+        li {
+            padding: 0 10rem;
+
+            a {
+                color: $color-white;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
