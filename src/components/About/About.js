@@ -1,17 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import Footer from 'components/Footer/Footer'
-import FeatureList from 'components/FeatureList/FeatureList'
+import FeatureListContainer from 'containers/FeatureListContainer/FeatureListContainer'
 import './About.scss'
 
 function About(props) {
     return (
         <div className="About">
             <h1>About</h1>
-            <p>
-                This is a convenient starting point for creating React applications. <br />
-                It includes the following: <br />
-                <FeatureList features={props.features} />
-            </p>
+            <p><strong>React Start</strong> is a convenient starting point for creating React applications.</p>
+            <p>It includes the following: </p>
+            <FeatureListContainer />
         </div>
     )
 }

@@ -9,8 +9,8 @@ html {
 	font-size: 62.5%;
 
 	body {
-		background-color: $body-background-color;
-		color: $font-color;
+		background-color: $color-background;
+		color: $color-black;
 		height: 100%;
 
 		#root {
@@ -20,7 +20,7 @@ html {
 			font-size: 1.6rem;
 
 			h1 {
-				font-weight: 200;
+				font-weight: $font-light;
 				text-align: center;
 				font-size: 8rem;
 				margin-top: 1rem;
