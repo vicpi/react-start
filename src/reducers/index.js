@@ -1,5 +1,4 @@
 import { ADD_TODO, SET_TODOS, DELETE_TODO, TOGGLE_TODO } from 'actions/index.js'
-import { addTodo, setTodos, deleteTodo, toggleTodo } from 'actions/index.js'
 
 const initialState = {
     todos: []

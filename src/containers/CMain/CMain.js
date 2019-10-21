@@ -1,6 +1,6 @@
 import { hot } from 'react-hot-loader/root'
 import { connect } from 'react-redux'
-import App from 'components/App/App'
+import Main from 'components/Main/Main'
 import { setTodos } from '../../actions/index'
 
 const mapStateToProps = (state) => {
@@ -10,4 +10,4 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = { setTodos }
 
-export default hot(connect(mapStateToProps, mapDispatchToProps)(App));
+export default hot(connect(mapStateToProps, mapDispatchToProps)(Main));

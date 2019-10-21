@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import { addTodo, setTodos } from 'actions'
 import globalReducer from 'reducers'
 import { StaticRouter } from 'react-router';
-import Page from 'components/Page/Page'
+import App from 'components/App/App'
 const routes = require('./routes/index')
 
 const app = express()
@@ -44,7 +44,7 @@ app.get('/*', (req, res) => {
                       location={req.originalUrl}
                       context={context}
                     >
-                        <Page />
+                        <App />
                     </StaticRouter>
                 </Provider>
             )

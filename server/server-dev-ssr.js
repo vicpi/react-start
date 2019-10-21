@@ -10,7 +10,7 @@ import isObject from 'is-object'
 import { addTodo, setTodos } from 'actions'
 import globalReducer from 'reducers'
 import { StaticRouter } from 'react-router';
-import Page from 'components/Page/Page'
+import App from 'components/App/App'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
@@ -60,7 +60,7 @@ app.get('/*', (req, res) => {
                       location={req.originalUrl}
                       context={context}
                     >
-                        <Page />
+                        <App />
                     </StaticRouter>
                 </Provider>
             )
