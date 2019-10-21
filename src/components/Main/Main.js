@@ -1,9 +1,20 @@
 import React, { useEffect } from 'react'
 import headerImage from '../../images/header-image.jpg'
 import './Main.scss'
+const FEATURES = [
+    'React',
+    'Redux',
+    'React Router',
+    'Server Side Rendering',
+    'Hot Module Reloading',
+    'SCSS',
+]
 
 function Main(props) {
     useEffect(() => {
+        if (props.features === undefined) {
+            props.setFeatures(FEATURES)
+        }
         console.log(`This is a ${process.env.NODE_ENV} mode`)
     }, [])
 
@@ -16,12 +27,11 @@ function Main(props) {
             <section className="text">
                 <p><strong>React Start</strong> is a convenient starting point for creating React applications.</p>
                 <p>It includes the following: </p>
-                <p>- React </p>
-                <p>- Redux </p>
-                <p>- React Router </p>
-                <p>- SCSS </p>
-                <p>- Server Side Rendering </p>
-                <p>- Hot Module Reloading </p>
+                {
+                    props.features ? props.features.map(
+                        (feature, index) => <p key={index}>{`- ${feature}`}</p>
+                    ) : null
+                }
             </section>
         </div>
     )

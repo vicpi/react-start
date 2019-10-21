@@ -1,13 +1,13 @@
 import { hot } from 'react-hot-loader/root'
 import { connect } from 'react-redux'
 import Main from 'components/Main/Main'
-import { setTodos } from '../../actions/index'
+import { setFeatures } from '../../actions'
 
 const mapStateToProps = (state) => {
     return {
-        todos: state.todos
+        features: state.features
     }
 }
-const mapDispatchToProps = { setTodos }
+const mapDispatchToProps = { setFeatures }
 
 export default hot(connect(mapStateToProps, mapDispatchToProps)(Main));

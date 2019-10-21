@@ -1,35 +1,14 @@
-import { ADD_TODO, SET_TODOS, DELETE_TODO, TOGGLE_TODO } from 'actions/index.js'
+import { SET_FEATURES } from 'actions/index.js'
 
 const initialState = {
-    todos: []
+    features: []
 }
 
 const globalReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_TODO:
+        case SET_FEATURES:
             return {
-                todos: [...state.todos, action.todo]
-            }
-        case SET_TODOS:
-            return {
-                todos: action.todos
-            }
-        case DELETE_TODO:
-            return {
-                todos: state.todos.filter(todo => todo.id !== action.id)
-            }
-        case TOGGLE_TODO:
-            return {
-                todos: state.todos.map(todo => {
-                    if (todo.id !== action.id) {
-                        return todo
-                    }
-
-                    return {
-                        ...todo,
-                        completed: !todo.completed
-                    }
-                })
+                features: action.features
             }
         default:
             return state

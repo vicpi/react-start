@@ -1,16 +1,17 @@
 import path from 'path'
 import express from 'express'
-import axios from 'axios'
 import fs from 'fs'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { addTodo, setTodos } from 'actions'
+import { setFeatures } from 'actions'
 import globalReducer from 'reducers'
 import { StaticRouter } from 'react-router';
 import App from 'components/App/App'
 const routes = require('./routes/index')
+
+const FEATURES = require('./features')
 
 const app = express()
 const port = 3000
@@ -33,28 +34,23 @@ app.use('/', routes)
 
 app.get('/*', (req, res) => {
     const store = createStore(globalReducer)
-    axios.get('http://localhost:8000/todos/')
-        .then(response => {
-            store.dispatch(setTodos(response.data))
-            const context = {};
-            // Render the component to a string
-            const html = renderToString(
-                <Provider store={store}>
-                    <StaticRouter
-                      location={req.originalUrl}
-                      context={context}
-                    >
-                        <App />
-                    </StaticRouter>
-                </Provider>
-            )
+    store.dispatch(setFeatures(FEATURES))
+    const context = {};
 
-            // Grab the initial state from our Redux store
-            const preloadedState = store.getState()
+    // Render the component to a string
+    const html = renderToString(
+        <Provider store={store}>
+            <StaticRouter
+              location={req.originalUrl}
+              context={context}
+            >
+                <App />
+            </StaticRouter>
+        </Provider>
+    )
 
-            res.send(renderFullPage(html, preloadedState))
-        })
-
+    const preloadedState = store.getState()
+    res.send(renderFullPage(html, preloadedState))
 })
 
 function renderFullPage(html, preloadedState) {
