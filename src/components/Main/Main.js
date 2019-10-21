@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import headerImage from '../../images/header-image.jpg'
+import FeatureList from 'components/FeatureList/FeatureList'
 import './Main.scss'
+
 const FEATURES = [
     'React',
     'Redux',
@@ -27,11 +29,7 @@ function Main(props) {
             <section className="text">
                 <p><strong>React Start</strong> is a convenient starting point for creating React applications.</p>
                 <p>It includes the following: </p>
-                {
-                    props.features ? props.features.map(
-                        (feature, index) => <p key={index}>{`- ${feature}`}</p>
-                    ) : null
-                }
+                <FeatureList features={props.features} />
             </section>
         </div>
     )
