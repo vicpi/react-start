@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "nodemon server/server-dev.js",
         "production": "npm run build && npm run build-server && node dist/server-prod.js",
-        "start": "npm run dev",
+        "start": "npm run dev-ssr",
         "test": "jest --config jest.config.json",
         "dev-ssr": "npm run build-server-dev && node dist/server-dev-ssr.js",
         "build": "webpack --config webpack/webpack.prod.config.js",
