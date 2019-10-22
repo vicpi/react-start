@@ -1,13 +1,6 @@
 import React, { useEffect } from 'react'
 
-const FEATURES = [
-    'React',
-    'Redux',
-    'React Router',
-    'Server Side Rendering',
-    'Hot Module Reloading',
-    'SCSS',
-]
+const FEATURES = require('features')
 
 const FeatureList = (props) => {
     useEffect(() => {

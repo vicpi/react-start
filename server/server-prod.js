@@ -11,7 +11,7 @@ import { StaticRouter } from 'react-router';
 import App from 'components/App/App'
 const routes = require('./routes/index')
 
-const FEATURES = require('./features')
+const FEATURES = require('features')
 
 const app = express()
 const port = 3000

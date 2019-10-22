@@ -17,7 +17,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware'
 const config = require('../webpack/webpack.dev.config.js')
 const routes = require('./routes/index')
 
-const FEATURES = require('./features')
+const FEATURES = require('features')
 
 const app = express()
 const compiler = webpack(config)
