@@ -3,7 +3,6 @@
 * but if you use it on your regular React bundle, then all the
 * node modules your app needs to function get stripped out.
 *
-* Note: that prod and dev mode are set in npm scripts.
 */
 const path = require('path')
 const webpack = require('webpack')
@@ -32,7 +31,6 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    // Transpiles ES6-8 into ES5
                     test: /\.js$/,
                     exclude: /node_modules/,
                     use: {
@@ -58,9 +56,3 @@ module.exports = (env, argv) => {
         }
     })
 }
-
-// Webpack 4 basic tutorial:
-// https://www.valentinog.com/blog/webpack-4-tutorial/#webpack_4_production_and_development_mode
-
-// Development mode is optimized for build speed and does nothing more than providing an un-minified bundle.
-// Production mode enables all sorts of optimizations like minification, scope hoisting, tree-shaking and more.

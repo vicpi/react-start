@@ -26,7 +26,6 @@ module.exports = {
     optimization: {
         minimize: true,
         minimizer: [
-            // This is only used in production mode
             new TerserPlugin({
                 terserOptions: {
                     parse: {
