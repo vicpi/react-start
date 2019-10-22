@@ -23,9 +23,9 @@ module.exports = (env, argv) => {
         mode: 'production',
         target: 'node',
         node: {
-            // Need this when working with express, otherwise the build fails
-            __dirname: false,   // if you don't put this is, __dirname
-            __filename: false,  // and __filename return blank or /
+            // Without this option, there is an error in the terminal
+            // "Error: ENOENT: no such file or directory, open '/dist/index.html'"
+            __dirname: false,
         },
         externals: [nodeExternals()], // Need this to avoid error when working with Express
         module: {
