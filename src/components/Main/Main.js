@@ -3,11 +3,11 @@ import headerImage from '../../images/header-image.jpg'
 import FeatureListContainer from 'containers/FeatureListContainer/FeatureListContainer'
 import './Main.scss'
 
-function Main(props) {
+function Main() {
     return (
         <div className="Main">
             <header className="Main-header">
-                <img className="header-image" src={headerImage} alt="To Do List" />
+                <img className="header-image" src={headerImage} alt="React Start" />
                 <h1>React Start</h1>
             </header>
             <section className="text">
