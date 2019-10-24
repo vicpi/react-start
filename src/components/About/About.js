@@ -5,7 +5,7 @@ import './About.scss'
 
 function About(props) {
     return (
-        <div className="About">
+        <div className="about">
             <h1>About</h1>
             <p><strong>React Start</strong> is a convenient starting point for creating React applications.</p>
             <p>It includes the following: </p>

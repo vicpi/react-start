@@ -5,8 +5,8 @@ import './Main.scss'
 
 function Main() {
     return (
-        <div className="Main">
-            <header className="Main-header">
+        <div className="main">
+            <header className="main-header">
                 <img className="header-image" src={headerImage} alt="React Start" />
                 <h1>React Start</h1>
             </header>
