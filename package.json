@@ -51,6 +51,7 @@
         "postcss-safe-parser": "^4.0.1",
         "react-test-renderer": "^16.10.2",
         "react-transform-hmr": "^1.0.4",
+        "redux-devtools": "^3.5.0",
         "sass-loader": "^8.0.0",
         "style-loader": "^1.0.0",
         "terser-webpack-plugin": "^2.1.3",

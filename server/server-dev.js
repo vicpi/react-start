@@ -25,5 +25,6 @@ const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
     console.log(`App listening to ${PORT}....`)
+    console.log(`You can open http://localhost:${PORT}/ in the browser`)
     console.log('Press Ctrl+C to quit.')
 })
