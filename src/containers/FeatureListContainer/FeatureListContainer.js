@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import FeatureList from 'components/FeatureList/FeatureList'
+import UnorderedList from 'components/UnorderedList/UnorderedList'
 import { setFeatures } from '../../actions'
 
 const mapStateToProps = (state) => {
@@ -9,4 +9,4 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = { setFeatures }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FeatureList);
+export default connect(mapStateToProps, mapDispatchToProps)(UnorderedList);
