@@ -17,7 +17,7 @@ module.exports = {
     bail: true,
     devtool: false,
     output: {
-        path: path.join(__dirname, '..', 'dist'),
+        path: path.join(__dirname, '../..', 'dist'),
         publicPath: '/static/',
         filename: '[name].js',
         chunkFilename: '[name].[contenthash:8].chunk.js'

@@ -1,3 +1,3 @@
 module.exports = {
-    webpackConfig: require('./webpack/webpack.dev.config.js')
+    webpackConfig: require('./webpack/client/webpack.dev.config.js')
   }

@@ -9,7 +9,7 @@ module.exports = {
         index: ['webpack-hot-middleware/client?reload=true&timeout=2000', './src/index.js']
     },
     output: {
-        path: path.join(__dirname, '..', 'dist'),
+        path: path.join(__dirname, '../..', 'dist'),
         publicPath: '/',
         filename: '[name].js'
     },

@@ -14,7 +14,7 @@ import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 import open from 'open'
-const config = require('../webpack/webpack.dev.config.js')
+const config = require('../webpack/client/webpack.dev.config.js')
 const routes = require('./routes/index')
 
 const FEATURES = require('features')
