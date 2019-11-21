@@ -13,6 +13,7 @@ import App from 'components/App/App'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
+import open from 'open'
 const config = require('../webpack/webpack.dev.config.js')
 const routes = require('./routes/index')
 
@@ -42,7 +43,6 @@ app.use('/', routes)
 
 app.get('/*', (req, res) => {
     const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName;
-    const outputPath = res.locals.webpackStats.toJson().outputPath;
     const javascriptBundles = normalizeAssets(assetsByChunkName.index)
         .filter((path) => path.endsWith('.js'))
         .map((path) => `<script src="${config.output.publicPath + path}"></script>`)
@@ -81,4 +81,5 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`App listening to ${PORT}....`)
     console.log('Press Ctrl+C to quit.')
+    open(`http://localhost:${PORT}`)
 })
