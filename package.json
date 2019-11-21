@@ -6,17 +6,20 @@
     "main": "index.js",
     "scripts": {
         "start": "npm run dev-ssr",
-        "dev": "nodemon server/server-dev.js",
-        "production": "npm run build && npm run build-server && node dist/server-prod.js",
+        "production": "npm run build && node dist/server-prod.js",
         "test": "jest --config jest.config.json --watch",
         "docs": "npx styleguidist server",
-        "dev-ssr": "npm run build-server-dev && node dist/server-dev-ssr.js",
-        "build": "webpack --config webpack/webpack.prod.config.js",
-        "build-server": "NODE_ENV=production webpack --config webpack/webpack.server.config.js",
-        "build-server-dev": "NODE_ENV=production webpack --config webpack/webpack.server-dev-ssr.config.js"
+
+        "dev-ssr": "npm run build:server-dev && node dist/server-dev-ssr.js",
+        "dev": "nodemon server/server-dev.js",
+
+        "build": "npm run build:client && npm run build:server",
+        "build:client": "webpack --config webpack/webpack.prod.config.js",
+        "build:server": "NODE_ENV=production webpack --config webpack/webpack.server.config.js",
+        "build:server-dev": "NODE_ENV=production webpack --config webpack/webpack.server-dev-ssr.config.js"
     },
-    "author": "",
-    "license": "ISC",
+    "author": "Viktor Pyskunov",
+    "license": "MIT",
     "devDependencies": {
         "@babel/core": "^7.6.4",
         "@babel/plugin-proposal-class-properties": "^7.5.5",

@@ -28,12 +28,12 @@ Then open [http://localhost:3000/](http://localhost:3000/) in your favourite bro
 ## NPM scripts
 
 - ```npm start``` - Run the application in development mode with Server Side Rendering and Hot Module Reloading.
-- ```npm run dev``` - Run the application in development mode with Hot Module Reloading on the client side and auto-update on the server side.
-- ```npm run dev-ssr``` - Run the application in development mode with Server Side Rendering and Hot Module Reloading. The same as ```npm start```.
-- ```npm run production``` - Create the minified production build and runs the application in production mode with Server Side Rendering.
-- ```npm run build``` - Create the minified production build in ```dist``` folder.
+- ```npm run production``` - Create the minified production build and runs the application in production mode (starts the production server) with Server Side Rendering.
 - ```npm test``` - Run tests using Jest.
 - `npm run docs` - Run React Styleguidist dev server on a separate port.
+- ```npm run dev``` - Run the application in development mode with Hot Module Reloading on the client side and auto-update on the server side.
+- ```npm run dev-ssr``` - The same as ```npm start```.
+- ```npm run build``` - Create the minified production build in the ```dist``` folder.
 
 ## License
 
